@@ -10,11 +10,13 @@ import { client } from '../utils/client';
 
 import { topics } from '../utils/constants';
 
+import {BASE_URL} from '../utils';
 
 
-const upload = () => {
+
+const Upload = () => {
   
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState<boolean | undefined>(false);
   const [videoAsset, setVideoAsset] = useState<SanityAssetDocument | undefined>();
   const [wrongFileType, setWrongFileType] = useState(false);
   const [caption, setCaption] = useState('');
@@ -70,7 +72,7 @@ const upload = () => {
         topic: category
       }
       
-      await axios.post(`http://localhost:3000/api/post`, document);
+      await axios.post(`${BASE_URL}/api/post`, document);
 
     router.push('/');
     }
@@ -194,4 +196,4 @@ const upload = () => {
   )
 }
 
-export default upload
+export default Upload
