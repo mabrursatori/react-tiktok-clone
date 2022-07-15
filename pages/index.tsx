@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import axios from 'axios';
 import {Video} from '../types';
 import VideoCard from '../components/VideoCard';
-import NoResult from '../components/NoResult';
+import NoResult from '../components/NoResults';
 
 import {BASE_URL} from '../utils';
 
