@@ -8,11 +8,15 @@ import GoogleLogin from 'react-google-login';
 import Discover from './Discover';
 import Footer from './Footer';
 import SuggestedAccounts from './SuggestedAccounts';
+import useAuthStore from '../store/authStore';
+
 
 const Sidebar = () => {
   const userProfile = false;
   const [showSidebar, setShowSidebar] = useState<Boolean>(true);
   const { pathname } = useRouter();
+  const { fetchAllUsers, allUsers }: any = useAuthStore();
+
   const activeLink = 'flex items-center gap-3 hover:bg-primary p-3 justify-center xl:justify-start cursor-pointer font-semibold text-[#F51997] rounded';
 
   const normalLink = 'flex items-center gap-3 hover:bg-primary p-3 justify-center xl:justify-start cursor-pointer font-semibold rounded';
@@ -63,7 +67,10 @@ const Sidebar = () => {
             )}
 
             <Discover/>
-            <SuggestedAccounts/>
+            <SuggestedAccounts
+            fetchAllUsers={fetchAllUsers}
+            allUsers={allUsers}
+          />
             <Footer/>
           </div>
         )}
